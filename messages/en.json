@@ -1,0 +1,140 @@
+{
+  "common": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "back": "Go back",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "Blueprint",
+    "subtitle": "Modern web app starter",
+    "description": "Production-ready Next.js template with authentication, real-time database, i18n, and modern tooling.",
+    "getStarted": "Get Started",
+    "learnMore": "View Repository",
+    "features": {
+      "title": "What's Included",
+      "auth": {
+        "title": "Authentication",
+        "description": "WorkOS AuthKit with SSO, magic links, and OAuth"
+      },
+      "database": {
+        "title": "Real-time Database",
+        "description": "Convex backend with type-safe queries and subscriptions"
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "description": "Multi-language support with next-intl"
+      },
+      "ui": {
+        "title": "Modern UI",
+        "description": "shadcn/ui components with dark mode"
+      },
+      "security": {
+        "title": "Security First",
+        "description": "CSP headers, error boundaries, and best practices"
+      },
+      "dx": {
+        "title": "Developer Experience",
+        "description": "TypeScript, Biome, hot reload, and more"
+      }
+    },
+    "authenticated": {
+      "welcome": "Welcome back, {name}",
+      "subtitle": "You're signed in and ready to build",
+      "github": "GitHub Repository",
+      "tasks": "Task Manager",
+      "tasksDescription": "Explore Convex real-time capabilities with a fully functional task manager.",
+      "openTasks": "Open Tasks"
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "heading": "My Tasks",
+    "subheading": "Manage your tasks with real-time updates powered by Convex",
+    "addTask": "Add Task",
+    "signOut": "Sign Out",
+    "filter": {
+      "all": "All",
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "done": "Done",
+      "archived": "Archived"
+    },
+    "status": {
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "done": "Done",
+      "archived": "Archived"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "actions": {
+      "menu": "Task actions",
+      "markTodo": "Mark as To Do",
+      "markInProgress": "Mark as In Progress",
+      "markDone": "Mark as Done",
+      "archive": "Archive",
+      "delete": "Delete",
+      "moveTo": {
+        "in_progress": "Start",
+        "done": "Complete"
+      }
+    },
+    "form": {
+      "title": "New Task",
+      "description": "Create a new task to track your work",
+      "titleLabel": "Title",
+      "titlePlaceholder": "What needs to be done?",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Add more details about this task...",
+      "priorityLabel": "Priority",
+      "priorityPlaceholder": "Select priority",
+      "dueDateLabel": "Due Date",
+      "tagsLabel": "Tags",
+      "tagsPlaceholder": "work, personal, urgent",
+      "tagsHint": "Separate tags with commas",
+      "submit": "Create Task",
+      "cancel": "Cancel",
+      "priority": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      }
+    },
+    "empty": {
+      "title": "No tasks yet",
+      "description": "Create your first task to get started",
+      "filtered": "No tasks match the current filter"
+    },
+    "convexFeatures": {
+      "title": "Convex Features Demonstrated",
+      "realtime": "Real-time subscriptions: Changes sync instantly across all clients",
+      "typeSafe": "Type-safe queries: Generated types from your schema",
+      "transactions": "ACID transactions: All mutations are atomic",
+      "indexes": "Database indexes: Fast queries with compound indexes"
+    },
+    "unauthenticated": {
+      "title": "Task Manager Demo",
+      "description": "Sign in to explore Convex's real-time capabilities with a fully functional task manager.",
+      "signIn": "Sign In",
+      "signUp": "Create Account"
+    }
+  },
+  "auth": {
+    "signInTitle": "Sign in to your account",
+    "signUpTitle": "Create an account",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "intl": {
+    "en": "English",
+    "it": "Italian"
+  }
+}

@@ -1,0 +1,170 @@
+# Blueprint
+
+A production-ready Next.js starter template with modern tooling and best practices built-in.
+
+## ✨ Features
+
+### Key Features
+
+- 🔒 Modern authentication (WorkOS AuthKit) with protected routes
+- ⚡ Real-time database (Convex) with type-safe React hooks
+- 🌍 Multi-language, type-safe i18n (next-intl)
+- 🎨 shadcn/ui component library & Tailwind CSS 4
+- 🌓 Dark mode & accessible, responsive design
+- 🛡️ Security best practices (CSP, headers, env validation)
+- 🚀 Optimized for performance (React Compiler, Next.js)
+- 🧑‍💻 Fast linting/formatting (Biome), reproducible dev env (devenv)
+
+### Stack choices
+
+| **Category**    | **Choice**                                                                                  |
+| --------------- | ------------------------------------------------------------------------------------------- |
+| Framework       | [Next.js](https://nextjs.org/) 16 (App Router) + [React](https://react.dev/) 19             |
+| Backend         | [Convex](https://www.convex.dev/) (real-time database & auth)                               |
+| Authentication  | [WorkOS AuthKit](https://workos.com/authkit)                                                |
+| Styling         | [Tailwind CSS](https://tailwindcss.com/) 4 + [shadcn/ui](https://ui.shadcn.com/) components |
+| i18n            | [next-intl](https://next-intl-docs.vercel.app/)                                             |
+| Type Safety     | [TypeScript](https://www.typescriptlang.org/) (strict mode)                                 |
+| Code Quality    | [Biome](https://biomejs.dev/) (linting & formatting) + [Ultracite](https://ultracite.dev/)  |
+| Runtime         | [Bun](https://bun.sh/)                                                                      |
+| Dev Environment | [devenv](https://devenv.sh/) + [direnv](https://direnv.net/)                                |
+
+## 🚧 Roadmap
+
+### ✅ Completed
+- [x] **Framework**: Next.js 16, React 19, TypeScript
+- [x] **Backend**: Convex (database, auth, real-time)
+- [x] **Auth**: WorkOS AuthKit
+- [x] **Styling**: Tailwind CSS 4, shadcn/ui, next-themes
+- [x] **i18n**: next-intl
+- [x] **Code Quality**: Biome, Ultracite, Husky
+- [x] **Dev Env**: devenv, direnv
+
+### 🚧 Planned / To Do
+- [ ] Vitest + Playwright for testing
+- [ ] Axiom for observability
+- [ ] Sentry for error tracking
+- [ ] Database migrations tooling
+- [ ] Email service integration
+- [ ] Effect integration
+
+## 🚀 Quickstart
+
+### Prerequisites
+- Bun runtime
+- (Optional) devenv + direnv for reproducible environment
+- a [WorkOS](https://workos.com/) account
+
+### Installation
+
+Clone and install dependencies
+```bash
+bun install
+```
+
+### Environment Variables
+
+Set up environment variables
+```bash
+cp .env.example .env.local
+```
+
+Fill the missing `WORKOS_API_KEY` and `WORKOS_CLIENT_ID` in `.env.local` with your WorkOS credentials.
+
+Generate the `WORKOS_COOKIE_PASSWORD` with a strong password of at least 32 characters.
+
+Don't worry about the `CONVEX_DEPLOYMENT` and `NEXT_PUBLIC_CONVEX_URL` variables, they will be set automatically by Convex during the first boot.
+
+### Running the development server
+
+Run dev servers (frontend + Convex backend)
+```bash
+bun dev
+```
+Open [http://localhost:3000](http://localhost:3000)
+
+### Available Commands
+
+```bash
+bun run dev       # Start Next.js + Convex dev servers
+bun run dev:fe    # Start only Next.js dev server
+bun run dev:be    # Start only Convex dev server
+bun run build     # Build for production
+bun run start     # Start production server
+bun run lint      # Lint & check code
+bun run format    # Format code
+```
+
+## 📦 Deployment
+
+Follow the various [Convex deployment guides](https://docs.convex.dev/production/hosting/) to deploy your app.
+
+## 🛠️ Build your project on top of Blueprint
+
+### Configure the app metadata
+
+Configure the app metadata in `src/app/[locale]/layout.tsx`
+
+Learn more: [Next.js Metadata Documentation](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
+
+
+### Configure the authenticated routes
+
+All routes are protected by authentication by default. To add an unauthenticated route, add it to the `unauthenticatedPaths` array in `src/proxy.ts`
+
+Learn more: [WorkOS AuthKit Documentation](https://workos.com/docs)
+
+### Add a new feature
+
+The usual workflow:
+
+1. Add the entities definitions in `convex/schema.ts`
+2. Create all the feature-specific backend functions in `convex/[feature].ts`
+3. Create the feature-specific frontend components in `src/features/[feature]/`
+4. Extend the app routing, making sure to handle also the loading state and the error boundaries
+
+### Add a new locale
+
+First, register the locale in `src/i18n/routing.ts` and add its native name:
+
+```typescript
+export const routing = defineRouting({
+  locales: ["en", "it", "es"], // Add your locale
+  defaultLocale: "en",
+  localePrefix: "always",
+});
+
+export const localeNativeName: Record<Locale, string> = {
+  en: "English",
+  it: "Italiano",
+  es: "Español", // Add its native name here
+};
+```
+
+Then, create the translation file in `messages/[locale].json` using the same structure as `messages/en.json`:
+
+```json
+{
+  "common": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse"
+  },
+  "home": {
+    "title": "Blueprint"
+  }
+}
+```
+
+Learn more: [next-intl Documentation](https://next-intl-docs.vercel.app/)
+
+## 🎯 Best Practices Followed
+
+This project embeds production-grade patterns and architectural decisions:
+
+- **Feature-based folder structure** (`src/features/[feature]/`): co-locates components, types, and state per feature for better maintainability and scalability
+- **Single source of truth**: configuration (routing, locales, auth) defined once and imported everywhere, eliminating drift and duplication
+- **shadcn/ui first**: composable, accessible components that you own and customize, not a rigid library dependency
+- **Separation of concerns**: clear frontend/backend boundaries (Next.js/Convex), avoiding tangled logic and improving testability
+- **Zero code duplication**: shared UI components (`src/components/ui/`), reusable layouts, and centralized utilities
+
+**Why these choices?** They reduce cognitive load, prevent common bugs, make onboarding faster, and ensure the codebase scales cleanly from prototype to production.
