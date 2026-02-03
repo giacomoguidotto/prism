@@ -12,9 +12,11 @@ export const authKit = new AuthKit<DataModel>(components.workOSAuthKit, {
 export const { authKitEvent } = authKit.events({
   "user.created": async (ctx, event) => {
     await ctx.db.insert("users", {
-      // Store WorkOS user ID - matches identity.subject from JWT
       authId: event.data.id,
     });
+  },
+  "user.updated": async (_ctx, _event) => {
+    // No-op: user updates are handled internally by the authkit component
   },
   "user.deleted": async (ctx, event) => {
     const user = await ctx.db
